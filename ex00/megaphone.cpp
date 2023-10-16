@@ -6,7 +6,7 @@
 /*   By: jadithya <jadithya@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:31:26 by jadithya          #+#    #+#             */
-/*   Updated: 2023/10/15 23:39:59 by jadithya         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:31:25 by jadithya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv) {
 	int			end;
 
 	if (argc < 2) {
-		std::cout<<"* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
+		std::cout<<"* LOUD AND UNBEARABLE FEEDBACK NOISE *"<<std::endl;
 		return (0);
 	}
 	for (int i = 1; argv[i]; i++) {
@@ -35,6 +35,6 @@ int	main(int argc, char **argv) {
 		}
 		std::cout<<" ";
 	}
-	std::cout<<"\n";
+	std::cout<<std::endl;
 	return (0);
 }
