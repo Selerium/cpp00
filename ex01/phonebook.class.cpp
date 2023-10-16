@@ -6,11 +6,12 @@
 /*   By: jadithya <jadithya@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:34:36 by jadithya          #+#    #+#             */
-/*   Updated: 2023/10/16 16:45:05 by jadithya         ###   ########.fr       */
+/*   Updated: 2023/10/16 16:50:04 by jadithya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.class.hpp"
+#include <cctype>
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -93,23 +94,25 @@ int	main(void) {
 
 	run = true;
 	std::cout << "\033c";
-	option = "1";
+	option = "add";
 	while (run) {
-		if (option != "1" && option != "2" && option != "3")
+		if (option != "add" && option != "search" && option != "exit")
 			std::cout << "\033cIncorrect input. Try again." << std::endl;
 		std::cout << "--------PHONEBOOK--------" << std::endl << std::endl;
 		std::cout << "Menu: " << std::endl
-			<< "1. Add a contact" << std::endl
-			<< "2. Search for a contact" << std::endl
-			<< "3. Exit the program" << std::endl << std::endl
+			<< "- [ADD] a contact" << std::endl
+			<< "- [SEARCH] for a contact" << std::endl
+			<< "- [EXIT] the program" << std::endl << std::endl
 			<< "Enter option: ";
 		std::cin >> option;
+		for (int i = 0; i < (int) option.length(); i++)
+			option[i] = tolower(option[i]);
 		std::cout << std::endl;
-		if (option == "1")
+		if (option == "add")
 			pb.AddContact();
-		else if (option == "2")
+		else if (option == "search")
 			pb.SearchContact();
-		else if (option == "3")
+		else if (option == "exit")
 			run = false;
 	}
 }
