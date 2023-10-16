@@ -6,7 +6,7 @@
 #    By: jadithya <jadithya@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/16 13:13:37 by jadithya          #+#    #+#              #
-#    Updated: 2023/10/16 14:02:30 by jadithya         ###   ########.fr        #
+#    Updated: 2023/10/16 17:33:38 by jadithya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@ OS := ${shell uname}
 
 CC := c++
 
-NAME := phoneBook
+NAME := PhoneBook
 
 CFLAGS := -Wall -Wextra -Werror -std=c++98
 
-SRCS := phonebook.class.cpp\
+SRCS := Phonebook.class.cpp\
 
 OBJS := $(SRCS:%.cpp=%.o)
 

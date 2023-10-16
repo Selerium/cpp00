@@ -6,14 +6,14 @@
 /*   By: jadithya <jadithya@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:14:51 by jadithya          #+#    #+#             */
-/*   Updated: 2023/10/16 15:45:35 by jadithya         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:34:07 by jadithya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_CLASS_HPP
 # define PHONEBOOK_CLASS_HPP
 
-#include "contact.class.cpp"
+#include "Contact.class.cpp"
 
 class	PhoneBook {
 	private:

@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jadithya <jadithya@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/15 18:23:29 by jadithya          #+#    #+#              #
-#    Updated: 2023/10/16 17:33:19 by jadithya         ###   ########.fr        #
+#    Created: 2023/10/16 13:13:37 by jadithya          #+#    #+#              #
+#    Updated: 2023/10/16 18:07:58 by jadithya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,12 @@ OS := ${shell uname}
 
 CC := c++
 
-NAME := megaphone
+NAME := banking
 
 CFLAGS := -Wall -Wextra -Werror -std=c++98
 
-SRCS := Megaphone.cpp
+SRCS := tests.cpp\
+		Account.cpp
 
 OBJS := $(SRCS:%.cpp=%.o)
 
@@ -27,7 +28,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
-$(OBJS): $(SRCS)
+%.o: %.cpp
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
