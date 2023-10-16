@@ -6,12 +6,11 @@
 /*   By: jadithya <jadithya@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:34:36 by jadithya          #+#    #+#             */
-/*   Updated: 2023/10/16 16:50:04 by jadithya         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:17:09 by jadithya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.class.hpp"
-#include <cctype>
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -26,22 +25,21 @@ PhoneBook::~PhoneBook(void) {
 }
 
 void	PhoneBook::AddContact() {
+	std::string	answer;
+
 	std::cout << "\033c";
 	std::cout << "First Name: ";
-	while (this->List[NumContacts].FirstName.length() == 0)
-		std::getline(std::cin, this->List[NumContacts].FirstName, '\n');
+	while (answer.length() == 0)
+		std::getline(std::cin, answer, '\n');
+	this->List[NumContacts % 8].FirstName = answer;
 	std::cout << "Last Name: ";
-	while (this->List[NumContacts].LastName.length() == 0)
-		std::getline(std::cin, this->List[NumContacts].LastName, '\n');
+	std::getline(std::cin, this->List[NumContacts % 8].LastName, '\n');
 	std::cout << "Nickname: ";
-	while (this->List[NumContacts].Nickname.length() == 0)
-		std::getline(std::cin, this->List[NumContacts].Nickname, '\n');
+	std::getline(std::cin, this->List[NumContacts % 8].Nickname, '\n');
 	std::cout << "Phone Number: ";
-	while (this->List[NumContacts].PhoneNumber.length() == 0)
-		std::getline(std::cin, this->List[NumContacts].PhoneNumber, '\n');
+	std::getline(std::cin, this->List[NumContacts % 8].PhoneNumber, '\n');
 	std::cout << "Dark Secret: ";
-	while (this->List[NumContacts].DarkSecret.length() == 0)
-		std::getline(std::cin, this->List[NumContacts].DarkSecret, '\n');
+	std::getline(std::cin, this->List[NumContacts % 8].DarkSecret, '\n');
 	NumContacts++;
 	std::cout << "\033c";
 }
@@ -53,7 +51,7 @@ void	PhoneBook::PrintContacts() {
 		<< "|" << std::setw(10) << "LAST NAME"
 		<< "|" << std::setw(10) << "NICKNAME"
 		<< std::endl;
-	for (int i = 0; i < this->NumContacts; i++) {
+	for (int i = 0; i < 8; i++) {
 		std::cout << std::setw(10) << (i + 1)
 			<< "|" << std::setw(10) << this->List[i].FirstName.substr(0, 10)
 			<< "|" << std::setw(10) << this->List[i].LastName.substr(0, 10)
