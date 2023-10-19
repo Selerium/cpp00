@@ -6,7 +6,7 @@
 /*   By: jadithya <jadithya@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:37:36 by jadithya          #+#    #+#             */
-/*   Updated: 2023/10/16 19:25:51 by jadithya         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:22:05 by jadithya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ Account::Account(int initial_deposit) {
 	this->_nbWithdrawals = 0;
 	this->_accountIndex = Account::_nbAccounts;
 	Account::_nbAccounts++;
+	Account::_totalAmount += initial_deposit;
 	this->_displayTimestamp();
 	std::cout << " index:" << this->_accountIndex 
 			<< ";amount:" << this->_amount
-			<< ";closed"
+			<< ";created"
 			<< std::endl;
 }
 
@@ -40,7 +41,7 @@ Account::~Account(void) {
 	this->_displayTimestamp();
 	std::cout << " index:" << this->_accountIndex 
 			<< ";amount:" << this->_amount
-			<< ";created"
+			<< ";closed"
 			<< std::endl;
 }
 
@@ -94,20 +95,45 @@ void	Account::displayAccountsInfos(void) {
 }
 
 void	Account::makeDeposit(int deposit) {
-	this->_nbDeposits++;
+	Account::_displayTimestamp();
+	std::cout << " index:"
+		<< this->_accountIndex
+		<< ";p_amount:"
+		<< this->_amount
+		<< ";deposit:"
+		<< deposit
+		<< ";amount:"
+		<< this->_amount + deposit
+		<< ";nb_deposits:"
+		<< ++this->_nbDeposits
+		<< std::endl;
 	Account::_totalNbDeposits++;
 	this->_amount += deposit;
 	Account::_totalAmount += deposit;
 }
 
 bool	Account::makeWithdrawal(int withdrawal) {
+	Account::_displayTimestamp();
+	std::cout << " index:"
+		<< this->_accountIndex
+		<< ";p_amount:"
+		<< this->_amount
+		<< ";withdrawal:";
 	if (withdrawal <= this->_amount) {
 		this->_nbWithdrawals++;
 		Account::_totalNbWithdrawals++;
 		this->_amount -= withdrawal;
 		Account::_totalAmount -= withdrawal;
+		std::cout << withdrawal
+			<< ";amount:"
+			<< this->_amount
+			<< ";nb_withdrawals:"
+			<< this->_nbWithdrawals
+			<< std::endl;
 		return (true);
 	}
+	std::cout << "refused"
+		<< std::endl;
 	return (false);
 }
 
